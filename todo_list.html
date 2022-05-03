@@ -14,10 +14,10 @@
     <script src="js/todo.js" defer></script>
   </head>
   <body>
-    <section class="todo-list box-style">
+    <section class="todo box-style">
       <div class="todo-con">
         <span class="today"></span>
-        <span class="clock"></span>
+        <span class="clock">00:00:00</span>
         <h1 class="title">What do you have to do today?</h1>
         <form id="todoForm">
           <input
@@ -30,18 +30,7 @@
           />
           <button id="todoSubmit" title="add">✏️</button>
         </form>
-        <ul class="items box-style">
-          <!-- <li class="box-style">
-            <p class="todoText">
-            </p>
-            <span class="date">0000:00:00</span>
-            <button
-              class="delete"
-              alt="delete"
-              title="delete"
-            />
-          </li> -->
-        </ul>
+        <ul class="items box-style hidden"></ul>
       </div>
     </section>
   </body>

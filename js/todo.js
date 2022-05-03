@@ -1,54 +1,60 @@
 "use strict";
 
+const items = document.querySelector(".items");
 const todoForm = document.querySelector("#todoForm");
-const todoInput = document.querySelector("#todoInput");
+const input = document.querySelector("#todoInput");
+
+function onLoad() {
+  updateDate();
+  updateClock();
+  setInterval(updateClock, 1000);
+}
 
 function onAdd(e) {
-  e.preventDefault(); // 새로고침 event 막기
+  showItems();
   createToDo();
-  todoInput.value = "";
-  todoInput.focus();
+  input.value = "";
+  input.focus();
 }
 
+function showItems() {
+  items.classList.remove("hidden");
+}
+
+let id = 0;
 function createToDo() {
-  const items = document.querySelector(".items");
-
-  //   element 생성
   const item = document.createElement("li");
-  const itemText = document.createElement("p");
-  const itemDate = document.createElement("span");
-  const itemDelete = document.createElement("button");
-  const date = new Date();
-
-  // appendChild 자식
-  items.appendChild(item);
-  item.appendChild(itemText);
-  item.appendChild(itemDate);
-  item.appendChild(itemDelete);
-
-  // setAttribute 속성
   item.setAttribute("class", "box-style");
-  itemText.setAttribute("class", "todoText");
-  itemDate.setAttribute("class", "date");
-  itemDelete.setAttribute("class", "delete");
-
-  // 날짜, 시간, textContent 텍스트
-  itemText.textContent = `${todoInput.value}`;
-  itemDate.textContent = `${date.getFullYear()}년 ${
-    date.getMonth() + 1
-  }월 ${date.getDate()}일`;
-  itemDelete.innerHTML = `<i class="fa-solid fa-trash-can" title="delete"></i>`;
-
-  // finish
-  itemText.addEventListener("click", () => {
-    item.classList.add("finished");
-  });
-
-  // delete
-  itemDelete.addEventListener("click", () => {
-    item.remove();
-    // items.removeChild(item);
-  });
+  item.setAttribute("data-id", id);
+  items.appendChild(item);
+  item.innerHTML = `
+    <p class="todoText">${input.value}</p>
+    <span class="date">${updateDate()}</span>
+    <button title="delete" >
+        <i class="fa-solid fa-trash-can delete" data-id=${id}></i>
+    </button>
+    <button title="finish">
+        <i class="fa-solid fa-square-check finish" data-id=${id}></i>
+    </button>
+    `;
+  item.scrollIntoView({ block: "center" });
+  id++;
 }
 
-todoForm.addEventListener("submit", onAdd);
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  onAdd(e);
+});
+
+items.addEventListener("click", (e) => {
+  const id = e.target.dataset.id;
+  const target = document.querySelector(`.items li[data-id="${id}"`);
+
+  if (e.target.matches(".delete")) {
+    target.remove();
+  } else if (e.target.matches(".finish")) {
+    target.classList.toggle("finished");
+  }
+});
+
+onLoad();
