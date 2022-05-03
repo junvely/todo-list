@@ -1,0 +1,150 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@400;500;700;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul > li {
+  list-style: none;
+}
+
+body {
+  height: 100%;
+  min-height: 950px;
+  background: url(../img/background3.jpg) no-repeat 50% / cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 0;
+}
+
+/* section */
+section.todo-list {
+  width: 70%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  background: rgba(253, 253, 253, 0.336);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  overflow: hidden;
+  border: none;
+  transition: all 0.3s ease-in;
+}
+
+/* border style */
+.box-style {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* todo-con */
+.todo-con {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 10% 15%;
+  word-break: break-all;
+}
+
+/* today */
+span.today {
+  display: block;
+  font-size: 1.3em;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* clock */
+span.clock {
+  font-size: 5.5em;
+  font-weight: bold;
+  line-height: 1.3em;
+  font-family: "Roboto", sans-serif;
+}
+
+/* title */
+h1.title {
+  font-size: 1.3em;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  margin: 7% 0;
+}
+
+/* todoForm */
+#todoForm {
+  margin: 0 auto;
+  position: relative;
+}
+#todoInput {
+  width: 70%;
+  line-height: 2.5em;
+  padding-left: 20px;
+}
+
+#todoSubmit {
+  line-height: 1.5em;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+#todoSubmit:hover {
+  transform: scale(1.2);
+}
+
+/* list_con */
+ul.items {
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+  padding: 1% 5%;
+  background: url(../img/wave2.png) no-repeat 50% / cover;
+  border: none;
+  /* overflow-x: hidden;
+  overflow-y: scroll; */
+}
+ul.items li {
+  width: 100%;
+  margin: 2% auto;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.9em;
+  background: rgba(253, 253, 253, 0.692);
+}
+.todoText {
+  width: 50%;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+.date {
+  font-size: 0.8em;
+  color: rgb(122, 122, 122);
+}
+.delete {
+  width: 15px;
+  height: 15px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: rgb(145, 145, 145);
+  transition: color 0.3s ease-in;
+}
+.delete:hover {
+  color: rgb(54, 54, 54);
+}
+.finished {
+  color: rgb(156, 156, 156);
+  text-decoration: line-through;
+}
