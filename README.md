@@ -2,6 +2,8 @@
 
 #### 📝Todo-list : 오늘의 Todo-list기록하기
 
+https://junvely-todo-list.netlify.app/
+
 ##### main 화면
 
 <img src="img/main.jpg" alt="main">
